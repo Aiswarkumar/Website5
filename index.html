@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Address</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@200&display=swap" rel="stylesheet">
+</head>
+<body>
+     
+<!-- https://ipapi.co/1.10.10.255/json/ -->
+     <!-- <img class="pic" src="images/nasa-yZygONrUBe8-unsplash.jpg" alt=""> -->
+
+        <h1>REST API for IP Address Geolocation</h1>
+        
+        <div class="div1">
+            <input type="text" placeholder="Enter IP address" id="ipaddress">
+            <button id="searchbtn">Search</button>
+        </div>
+
+        
+    
+       <p id="onedata"></p>
+       
+
+
+     <script>
+        let inputtag = document.getElementById("ipaddress");
+        let searchbtn = document.getElementById("searchbtn");
+        let regionva = document.getElementById("onedata");
+
+        searchbtn.addEventListener("click",functionnamme)
+
+        function functionnamme(){
+            fetch("https://ipapi.co/"+inputtag.value+"/json/")
+             .then(data=>{return data.json()})
+            .then((output)=>{
+                console.log(output);
+                regionva.innerHTML=output.city <br> +output.region+output.region_code+output.country+output.country_capital+output.longitude+output.currency;
+                // regionva.innerHTML=output.region;
+                // regionva.innerHTML=output.region_code;
+                // regionva.innerHTML=output.country;
+                // regionva.innerHTML=output.country_name;
+                // regionva.innerHTML=output.country_capital;
+                // regionva.innerHTML=output.longitude;
+                // regionva.innerHTML=output.currency;
+                // regionva.innerHTML=output.currency_name;
+                
+                
+            })
+        }
+
+        
+     </script>
+</body>
+</html>
